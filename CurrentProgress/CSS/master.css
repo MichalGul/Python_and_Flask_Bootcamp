@@ -1,0 +1,53 @@
+h1
+{
+    color: blue;
+    font-family: monospace;
+
+}
+li
+{
+    color: rgb(16, 243, 8);
+}
+
+p
+{
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    font-family: 'Pattaya', sans-serif;
+}
+
+h4
+{
+    color: rgba(190, 5, 61, 0.5);
+}
+
+div
+{
+    background: blue;
+    border:red 10px dashed;
+}
+span
+{
+    background: white;
+    color: black;
+}
+.firstDiv
+{
+    background-color: blueviolet;
+}
+.secondDiv
+{
+    background-color: chocolate;
+}
+#paragf
+{
+    color: darkgreen;
+}
+
+#two
+{
+    color: brown;
+}
