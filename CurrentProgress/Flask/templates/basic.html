@@ -17,6 +17,32 @@
     <h2>Letters: {{html_letters[2:]}}</h2>
     <h1>Pup dictonary: {{html_pup_dict['pup_name']}}</h1>
    <!-- <img src="../static/puppy_pic.jpg" alt=""> -->
+
+<!-- Basic template control flow-->
+
+    <h1>{{html_mylist}}</h1>
     
+<!-- Wyświetlanie listy pythonowej w template-->
+
+    <ul>
+        {% for element in html_puppies %}
+                <li>{{element}}</li>
+        {% endfor %}
+
+    </ul>
+
+    {%if 'sda' in html_puppies%}
+        <p>Found Rufus</p>
+    {% else %}
+        <p>Where the fuck is Rufus</p>
+    {% endif %}
+
+    {%if html_user_logged_in %}
+        <p>Welcome back, you are now logged in!</p>
+    {%else%}
+        <p>Please log in!</p>
+    {%endif%}
+
+
 </body>
 </html>
