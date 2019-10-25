@@ -6,6 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template('index_form.html')
 
+
 @app.route('/signup_form')
 def signup_form():
    return render_template('sign_up.html')
@@ -20,6 +21,11 @@ def thank_you():
                             html_first = first,
                             html_last = last)
 
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
     app.run()
