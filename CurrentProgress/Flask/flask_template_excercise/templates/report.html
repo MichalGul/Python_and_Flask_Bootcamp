@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h2>Lets see how you performed!</h2>
+
+    <p></p>
+    {%if has_upper_case and has_lower_case and is_last_digit %}
+    <h4> Your username passed the 3 requirements!</h4>
+    {% else %}
+        <p>Here are the requirements you failed</p>
+        <ul>
+            {% if not has_upper_case %}
+                <li>You did not use an uppercase character</li>
+            {% endif %}
+            {% if not has_lower_case%}
+            <li>You did not use an lowercase character</li>
+            {% endif %}
+            {% if not is_last_digit%}
+            <li>You did not use an digit character on last place</li>
+            {% endif %}
+        </ul>
+    {% endif %}
+</div>
+
+{% endblock content %}

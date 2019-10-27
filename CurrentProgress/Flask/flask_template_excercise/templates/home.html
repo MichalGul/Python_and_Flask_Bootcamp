@@ -5,14 +5,20 @@
 
 <div class="jumbotron">
 
-    <h1>Welcome to sign up page !</h1>
-    <p>Fill out the form. Notice we don't save any info!</p>
+    <h2>Welcome to sign up page !</h2>
+    <p>Let's see if your User Name is secure!</p>
 
-    <form action="{{ url_for('thank_you') }}">
-    <label for="first">First Name:</label>
-    <input type="text" name="first">
-    <label for="last">Last Name:</label>
-    <input type="text" name="last">
+    <p>Fill out the form below with a User Name that has these restrains</p>
+
+    <ul>
+        <li>Must have an upper case letter somewhere</li>
+        <li>Must have a lower case letter somewhere</li>
+        <li>Must have a number at the end</li>
+    </ul>
+    <form action="{{ url_for('report') }}">
+
+    <label for="name">UserName:</label>
+    <input type="text" name="name">
     <input type="submit" value="Submit Form">
 
     </form>
