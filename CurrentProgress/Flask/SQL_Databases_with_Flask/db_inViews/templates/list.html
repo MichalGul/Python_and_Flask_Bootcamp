@@ -2,6 +2,16 @@
 
 {% block content %}
 
+{% for mess in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role='alert'>
+    <button type="button" data-dismiss='alert' aria-label="Close" class="fade close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    {{ mess }}
+{% endfor %}
+
+</div>
+
 <div class="jumbotron">
     <h1 class="display-3">Here is a list of all available puppies:</h1>
     <p class="lead">They are waiting for adoption</p>
