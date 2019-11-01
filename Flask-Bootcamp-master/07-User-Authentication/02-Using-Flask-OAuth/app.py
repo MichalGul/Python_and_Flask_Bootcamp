@@ -36,13 +36,11 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 
 
-blueprint = make_google_blueprint(
-    client_id="######.apps.googleusercontent.com",
-    client_secret="####",
-    # reprompt_consent=True,
-    offline=True,
-    scope=["profile", "email"]
-)
+blueprint = make_google_blueprint(client_id='72342792172-gf05qu427i264t09u46qb32mi6c7s7ep.apps.googleusercontent.com',
+                                     client_secret='hxAWgDxNWkBgeWj9lWoi-ITc', 
+                                     offline=True,
+                                     scope=['profile', 'email'])
+									 
 app.register_blueprint(blueprint, url_prefix="/login")
 
 @app.route('/')
