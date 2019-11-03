@@ -31,6 +31,7 @@ class Puppy(db.Model):
     __tablename__ = 'puppies'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
+    
     # ONE TO ONE
     # ONE PUPPY <----> ONE OWNER
     owner = db.relationship("Owner", backref='puppy', uselist=False)
