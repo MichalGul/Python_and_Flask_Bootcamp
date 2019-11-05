@@ -67,14 +67,14 @@ def logout():
 #account( Update user form)
 
 @users.route('/account', methods=['GET', 'POST'])
-@login_required
+@login_required # Must be logged in to see this view, daje tez funkcjonalnosc current_user
 def account():
 
     form = UpdateUserForm()
 
     if form.validate_on_submit():
 
-        if form.picture.data:
+        if form.picture.data: #If someone submitted to picture file from formsss
             username = current_user.username
             pic = add_profile_pic(form.picture.data, username)
             current_user.profile_image = pic
@@ -88,10 +88,18 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
 
+    #Renderowanie template for account page (default)
     profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     
+                                            #przekazanie obrazka (linka do obrazka)
     return render_template('account.html', profile_image=profile_image, form=form)
 
 
 
 # user's list of blog posts
+
+@users.route('/<username>') #username moze byc rozne
+def user_posts(username):
+    page = request.args.get('page', 1, type=int) # pozwala na cycle through posty uzytkownika (rozdzielenie na karty w bootstrapie w templacie trzeba bedzie jeszcze pozmieniac)
+    user = User.query.filter_by(username=username).first_or_404() #jak nie ma usera to wyswietli sie blad 404
+    blog_posts = BlogPost.query.filter_by(author = user).order_by
