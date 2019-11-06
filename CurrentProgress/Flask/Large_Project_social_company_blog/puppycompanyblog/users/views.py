@@ -48,7 +48,7 @@ def login():
 
             next = request.args.get('next') # what user is trying to acces
 
-            if next == None or not nex[0]=='/':
+            if next == None or not next[0]=='/':
                 next = url_for('core.index')
 
             return redirect(next)
@@ -81,6 +81,8 @@ def account():
 
         current_user.username = form.username.data
         current_user.email = form.email.data
+        db.session.commit() # Send data to dadabase
+        
         flash('User Account Updated!')
         return redirect(url_for('users.account'))
 

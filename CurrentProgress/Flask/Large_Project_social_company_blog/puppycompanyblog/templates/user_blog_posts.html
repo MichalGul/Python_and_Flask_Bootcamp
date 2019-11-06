@@ -17,9 +17,26 @@
     <br>
     <p>{{post.text}}</p>
     <br>
-    
-    {%endfor%}
-    
+
+    {% endfor %}
 </div>
+
+<nav aria-label="Page Navigation Example">
+    <ul class="pagination justify-content-center">
+        {% for page_num in blog_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %} <!-- iter pages flaskowa metoda-->
+            
+            {% if blog_posts.page == page_num %} <!--jesli jestem na tej samej stronie na jaka patrze-->
+                <li class='page-item disabled'><!-- Ma wygladac jakby byla nie do klikniecia bo obecnie na tej stronie sie jest (takie zaznaczenie strony ze na niej sie jest)-->
+                    <a class='page-link' href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a> 
+                </li>  
+           {% else %}
+           <!--Strona na ktorej sie nie jest-->
+           <li class='page-item'><!-- Ma wygladac jakby byla nie do klikniecia bo obecnie na tej stronie sie jest (takie zaznaczenie strony ze na niej sie jest)-->
+            <a class='page-link' href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{{{page_num}}}}</a> 
+        </li>  
+        {% endif %}
+        {% endfor %}
+    </ul>
+  </nav>
 
 {% endblock content %}
