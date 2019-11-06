@@ -31,7 +31,53 @@ def create_post():
 
 
 #BLOG POST (VIEW)
+@blog_posts.route('/<int:blog_post_id>')
+def blog_post(blog_post_id): #'/<int:blog_post_id>' ta zmienna jest przechowywana tu
+    blog_post = BlogPost.query.get_or_404(blog_post_id) # przekazanie integera
+    return render_template('blog_post.html', title=blog_post.title,
+                            date=blog_post.date, post=blog_post)
+
+
 
 #UPDATE
+@blog_posts.route('/<int:blog_post_id/update', methods=['GET', 'POST']):
+@login_required
+def update(blog_post_id):
+    blog_post =  BlogPost.query.get_or_404(blog_post_id)
+
+    #Check is person visiting is author
+    if blog_post.author != current_user:
+        abort(403) #raise forbidden error
+
+    form = BlogPostForm()
+
+    if form.validate_on_submit():
+        
+        #Reset blog post
+        blog_post.title = form.title.data,
+        blog_post.text = form.text.data,
+
+        db.session.commit()
+        flash('Blog Post Updated')
+        return redirect(url_for('blog_posts.blog_post', blog_post_id = blog_post_id))
+
+    elif request.method = 'GET': #No post data yet, gdy chcemy updedowac post ale zeby nam nie czyscil pol po klikniecu na update
+        form.title.data = blog_post.title
+        form.text.data = blog_post.text
+
+    return render_template('create_post.html', title='Updating', form=form)
+        
 
 #DELATE
+@blog_posts.route('/<int:blog_post_id/delete', methods=['GET', 'POST']):
+@login_required
+def delete_post(blog_post_id):
+#Bedzie button do usuwania
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
+    if blog_post.author != current_user:
+        abort(403)
+
+    db.session.delete(blog_post)
+    db.session.commit()
+    flash('Blog Post Deleted')
+    redirect(url_for('core.index'))
