@@ -13,28 +13,31 @@
                                                                                 <!--Id stworzonego modala https://getbootstrap.com/docs/4.1/components/modal/-->
             <button type="button" class="btn btn-danger" data-toggle='modal' data-target='#del_modal'>Delete</button>
         </div>
-        {% else %}
         
         {% endif %}
 
     </div>
 
-    <!--Kod wystajacego modala-->
-    <div class="modal" tabindex="-1" role="dialog">
+    <!--Kod wystajacego modala tzw. popup           odniesienie do buttona , czyli po nacisniecu buttona Delete odpala sie popup (modal)-->
+    <div class="modal" tabindex="-1" role="dialog" id=del_modal>
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title">Delete Post?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>Modal body text goes here.</p>
+              <p>Are you sure you want</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <!--Prosty guzik prowadzacy do przejsca do delete_post view, czyli usuniecia pliku-->
+                <form action="{{url_for('blog_posts.delete_post', blog_post_id=post.id)}}">
+                  <input type="submit" value="Delete">
+                </form>
+
             </div>
           </div>
         </div>
