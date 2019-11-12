@@ -25,8 +25,62 @@
 <body>
 
 	<header>
-		<nav class="navbar bg-primary">
-			Hello...
+		<nav class="navbar navbar-dark bg-jumpers navbar-expand-lg">
+			<a class="navbar-brand" href="#">
+				<img src="img/logo.png" class="d-inline-block mr-1 align-bottom" width="30" height="30" alt=""> Skoki.pl</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
+			 aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji"> 
+				<span class='navbar-toggler-icon'></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="mainmenu">
+
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-link">
+						<a class="nav-link active" href="#"> Start </a>
+					</li>
+					<li class="nav-link dropdown">
+						<a class="nav-link dropdown-toggle" id="submenu" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" 
+						aria-expanded="false"> Zawody </a>
+
+						<div class="dropdown-menu" aria-labelledby="submenu">
+							<a class="dropdown-item" href="">Terminarz zawodów</a>
+							<a class="dropdown-item" href="">Ranking Pucharu Świata</a>
+
+							<div class="dropdown-divider"></div>
+
+							<a class="dropdown-item" href="">Sylwetki zawodników</a>
+							<a class="dropdown-item" href="">Skocznie narciarskie</a>
+
+						</div>
+
+					</li>
+					<li class="nav-link">
+						<a class="nav-link" href="#"> Historia </a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-link" href="#"> Zdjęcia </a>
+					</li>
+					<li class="nav-link disabled">
+						<a class="nav-link" href="#"> Wywiady </a>
+					</li>
+					<li class="nav-link">
+						<a class="nav-link" href="#"> Kontakt </a>
+					</li>
+
+
+				</ul>
+
+				<form class="form-inline">
+					<input class="form-control mr-1" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
+					<button class="btn btn-light" type="submit">Znajdź</button>
+
+				</form>
+
+			</div>
+
 
 		</nav>
 	</header>
